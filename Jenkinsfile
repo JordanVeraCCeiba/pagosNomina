@@ -52,8 +52,8 @@ pipeline {
 		echo pwd
 		echo "------------>Lista de carpetas<------------"
 		sh 'ls'
-		sh 'chmod +x ./microservicio/gradlew'
-		sh 'microservicio/gradlew --b ./microservicio/build.gradle clean test'
+		sh 'chmod +x ./gradlew'
+		sh './gradlew --b ./build.gradle clean test'
       }
     }
 
