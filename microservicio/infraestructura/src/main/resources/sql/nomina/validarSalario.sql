@@ -1,0 +1,1 @@
+select count(1) from empleado where id = :idEmpleado and salario = :pagoEmpleado

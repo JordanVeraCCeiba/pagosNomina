@@ -1,0 +1,30 @@
+jasypt:
+   encryptor:
+      password: ${jasyptpwd:secretkey}
+      algorithm: PBEWithMD5AndDES
+
+server:
+   port: 8080
+   servlet:
+      context-path: /pagos
+      session:
+         timeout: 21600s
+
+spring:
+   datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://localhost:3306/nomina
+      username: root
+      password: 123456
+      hikari:
+         poolName: pool
+
+addons:
+   sonarcloud:
+      organization: "jordanveracceiba"
+      token:
+         secure: "a49f62385e90c38762f1a4a1110fb8be137eba60" # encrypted value of your token
+
+script:
+   - ./gradlew sonarqube
