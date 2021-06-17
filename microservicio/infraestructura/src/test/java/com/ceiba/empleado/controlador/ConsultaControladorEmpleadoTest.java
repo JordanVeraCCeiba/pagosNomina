@@ -31,8 +31,7 @@ public class ConsultaControladorEmpleadoTest {
         // act - assert
         mocMvc.perform(get("/empleados")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)));
+                .andExpect(status().isOk());
     }
 
 
