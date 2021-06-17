@@ -39,7 +39,7 @@ pipeline {
 			submoduleCfg: [],
 			userRemoteConfigs: [[
 				credentialsId: 'GitHub_JordanVeraCCeiba',
-				url:'https://github.com/JordanVeraCCeiba/pagos.git'
+				url:'https://github.com/JordanVeraCCeiba/pagosNomina.git'
 			]]
 		])
 
