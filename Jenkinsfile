@@ -49,6 +49,7 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Compile & Unit Tests<------------"
+		echo pwd
 		sh 'chmod +x ./microservicio/gradlew'
 		sh './microservicio/gradlew --b ./microservicio/build.gradle clean test'
       }
@@ -67,6 +68,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
+		
 		sh './microservicio/gradlew --b ./microservicio/build.gradle build -x test'
       }
     }
