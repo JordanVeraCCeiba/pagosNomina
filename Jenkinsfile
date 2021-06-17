@@ -51,7 +51,7 @@ pipeline {
         echo "------------>Compile & Unit Tests<------------"
 		echo pwd
 		echo "------------>Lista de carpetas<------------"
-		ls
+		echo ls
 		sh 'chmod +x ./microservicio/gradlew'
 		sh './microservicio/gradlew --b ./microservicio/build.gradle clean test'
       }
