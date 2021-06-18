@@ -1,19 +1,21 @@
 package com.ceiba.nomina.modelo.entidad;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionError;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
 @Setter
 public class Nomina {
 
+    public static final String ID_EMPLEADO_OBLIGATORIO = "El id del empleado es obligatorio";
+    public static final String FECHA_PAGO_OBLIGATORIO = "Fecha de pago es obligatoria";
+    public static final String PAGO_EMPLEADO_OBLIGATORIO = "El pago del empleado es obligatorio";
     public static final String VALIDACION_FECHA_PAGO = "La fecha de pago es de lunea a sabado";
     public static final String VALIDACION_PAGO = "El pago debe ser igual al registrado o ultimo actualizado";
     private static final String ERROR_FORMATO_DE_FECHA = "Error en el formato de la fecha";
@@ -27,6 +29,10 @@ public class Nomina {
     private Double pension;
 
     public Nomina(Long id, Long idEmpleado, String fechaPago, Double pagoEmpleado, Double salud, Double pension) {
+
+        validarObligatorio(idEmpleado,ID_EMPLEADO_OBLIGATORIO);
+        validarObligatorio(fechaPago,FECHA_PAGO_OBLIGATORIO);
+        validarObligatorio(pagoEmpleado,PAGO_EMPLEADO_OBLIGATORIO);
 
         validarFechaPago(fechaPago);
         salud = calcularSalud(pagoEmpleado);

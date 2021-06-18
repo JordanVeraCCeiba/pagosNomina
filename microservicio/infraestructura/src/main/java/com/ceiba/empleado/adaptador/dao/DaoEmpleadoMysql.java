@@ -3,7 +3,6 @@ package com.ceiba.empleado.adaptador.dao;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.empleado.modelo.dto.DtoEmpleado;
-
 import com.ceiba.empleado.puerto.dao.DaoEmpleado;
 import org.springframework.stereotype.Component;
 

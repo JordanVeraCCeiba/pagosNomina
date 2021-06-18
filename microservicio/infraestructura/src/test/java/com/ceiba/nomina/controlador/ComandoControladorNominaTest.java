@@ -1,7 +1,6 @@
 package com.ceiba.nomina.controlador;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.empleado.comando.ComandoEmpleado;
 import com.ceiba.nomina.comando.ComandoNomina;
 import com.ceiba.nomina.testdatabuilder.ComandoNominaTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,28 +28,46 @@ public class ComandoControladorNominaTest {
     @Autowired
     private MockMvc mocMvc;
 
-    /*@Test
+    @Test
     public void crear() throws Exception{
         // arrange
         ComandoNomina nomina = new ComandoNominaTestDataBuilder().build();
+        nomina.setIdEmpleado(1L);
+        nomina.setFechaPago("11/10/2021");
+        nomina.setPagoEmpleado(250000D);
         // act - assert
         mocMvc.perform(post("/nomina")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(nomina)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 1}"));
-    }*/
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(content().json("{'valor': 2}"));
+    }
 
     @Test
     public void validarPago() throws Exception{
         // arrange
         ComandoNomina nomina = new ComandoNominaTestDataBuilder().build();
+        nomina.setIdEmpleado(1L);
         nomina.setPagoEmpleado(1000000D);
         // act - assert
         mocMvc.perform(post("/nomina")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(nomina)))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionError', 'mensaje': 'El salario debe ser igual al registrado o al ultimo actualizado'}"));;
+    }
+
+    @Test
+    public void validacionDiaDomingo() throws Exception{
+        // arrange
+        ComandoNomina nomina = new ComandoNominaTestDataBuilder().build();
+        nomina.setFechaPago("10/10/2021");
+        // act - assert
+        mocMvc.perform(post("/nomina")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(nomina)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionError', 'mensaje': 'El pago no se puede realizar un domingo'}"));
     }
 
 }

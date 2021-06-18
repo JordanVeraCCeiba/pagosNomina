@@ -30,5 +30,4 @@ public class ServiciosEmpleadoTest {
         BasePrueba.assertThrows(() -> usuarioTestDataBuilder.build(), ExcepcionError.class, "El empleado debe tener mas de 18 años");
     }
 
-
 }

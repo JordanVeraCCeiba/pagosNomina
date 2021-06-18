@@ -1,15 +1,12 @@
 package com.ceiba.empleado.modelo.entidad;
 
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionError;
 import lombok.Getter;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter

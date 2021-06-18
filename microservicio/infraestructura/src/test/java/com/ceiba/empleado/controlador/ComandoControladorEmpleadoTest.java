@@ -5,7 +5,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import com.ceiba.ApplicationMock;
 import com.ceiba.empleado.comando.ComandoEmpleado;
 import com.ceiba.empleado.servicio.testdatabuilder.ComandoEmpleadoTestDataBuilder;
@@ -38,7 +37,7 @@ public class ComandoControladorEmpleadoTest {
         mocMvc.perform(post("/empleados")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(empleado)))
-                .andExpect(status().isOk())
+                .andExpect(status().is2xxSuccessful())
                 .andExpect(content().json("{'valor': 2}"));
     }
 
@@ -51,7 +50,7 @@ public class ComandoControladorEmpleadoTest {
         mocMvc.perform(put("/empleados/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(empleado)))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
     }
 
     @Test
@@ -62,7 +61,7 @@ public class ComandoControladorEmpleadoTest {
         mocMvc.perform(delete("/empleados/{id}",id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful());
     }
 
     @Test
@@ -74,20 +73,21 @@ public class ComandoControladorEmpleadoTest {
         mocMvc.perform(post("/empleados")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(empleado)))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionError', 'mensaje': 'El empleado debe tener mas de 18 años'}"));
     }
 
     @Test
     public void validacionCedula() throws Exception{
         // arrange
         ComandoEmpleado empleado = new ComandoEmpleadoTestDataBuilder().build();
-        empleado.setCedula(123L);
+        empleado.setCedula(1090506292L);
         // act - assert
         mocMvc.perform(post("/empleados")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(empleado)))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{'valor': 3}"));
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionDuplicidad', 'mensaje': 'El empleado ya existe en el sistema'}"));
     }
 
 }

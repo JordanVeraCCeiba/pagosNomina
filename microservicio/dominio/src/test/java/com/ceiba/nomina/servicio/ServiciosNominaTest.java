@@ -1,7 +1,6 @@
 package com.ceiba.nomina.servicio;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionError;
 import com.ceiba.nomina.modelo.entidad.Nomina;
 import com.ceiba.nomina.puerto.repositorio.RepositorioNomina;

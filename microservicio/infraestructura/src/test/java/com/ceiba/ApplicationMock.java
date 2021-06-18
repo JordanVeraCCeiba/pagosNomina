@@ -1,9 +1,7 @@
 package com.ceiba;
 
 import java.io.IOException;
-
 import javax.sql.DataSource;
-
 import org.flywaydb.core.Flyway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

@@ -4,12 +4,6 @@ import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.empleado.modelo.entidad.Empleado;
 import com.ceiba.empleado.puerto.repositorio.RepositorioEmpleado;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 public class ServicioCrearEmpleado {
 
     private static final String EL_USUARIO_YA_EXISTE_EN_EL_SISTEMA = "El empleado ya existe en el sistema";

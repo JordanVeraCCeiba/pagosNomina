@@ -3,7 +3,6 @@ package com.ceiba.nomina.adaptador.dao;
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.nomina.modelo.dto.DtoNomina;
 import org.springframework.jdbc.core.RowMapper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

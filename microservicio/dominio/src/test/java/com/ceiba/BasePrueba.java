@@ -1,9 +1,7 @@
 package com.ceiba;
 
 import static org.junit.Assert.fail;
-
 import java.util.function.Supplier;
-
 import org.junit.Assert;
 
 public class BasePrueba {
