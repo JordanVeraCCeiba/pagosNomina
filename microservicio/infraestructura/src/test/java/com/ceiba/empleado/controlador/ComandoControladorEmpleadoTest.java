@@ -154,4 +154,18 @@ public class ComandoControladorEmpleadoTest {
                 .andExpect(status().is4xxClientError())
                 .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'El campo salario es obligatorio'}"));
     }
+
+    @Test
+    public void validacionCampoCargo() throws Exception{
+        // arrange
+        ComandoEmpleado empleado = new ComandoEmpleadoTestDataBuilder().build();
+        empleado.setCargo(null);
+        // act - assert
+        mocMvc.perform(post("/empleados")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(empleado)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'El campo cargo es obligatorio'}"));
+    }
+
 }
