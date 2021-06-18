@@ -29,8 +29,7 @@ public class ConsultaControladorNominaTest {
         // act - assert
         mocMvc.perform(get("/nomina")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)));
+                .andExpect(status().is2xxSuccessful());
     }
 
 
