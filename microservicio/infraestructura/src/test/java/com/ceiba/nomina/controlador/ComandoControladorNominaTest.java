@@ -1,6 +1,8 @@
 package com.ceiba.nomina.controlador;
 
 import com.ceiba.ApplicationMock;
+import com.ceiba.empleado.comando.ComandoEmpleado;
+import com.ceiba.empleado.servicio.testdatabuilder.ComandoEmpleadoTestDataBuilder;
 import com.ceiba.nomina.comando.ComandoNomina;
 import com.ceiba.nomina.testdatabuilder.ComandoNominaTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -68,6 +69,60 @@ public class ComandoControladorNominaTest {
                 .content(objectMapper.writeValueAsString(nomina)))
                 .andExpect(status().is4xxClientError())
                 .andExpect(content().json("{'nombreExcepcion': 'ExcepcionPagoDomingo', 'mensaje': 'El pago no se puede realizar un domingo'}"));
+    }
+
+    /*
+    @Test
+    public void validacionSaludPensionSlario() throws Exception{
+        // arrange
+        ComandoNomina nomina = new ComandoNominaTestDataBuilder().build();
+        nomina.setPagoEmpleado(2500000D);
+        // act - assert
+        mocMvc.perform(post("/nomina")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(nomina)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionPagoDomingo', 'mensaje': 'El pago no se puede realizar un domingo'}"));
+    }
+    */
+
+    @Test
+    public void validacionCmapoIdEmpleado() throws Exception{
+        // arrange
+        ComandoNomina nomina = new ComandoNominaTestDataBuilder().build();
+        nomina.setIdEmpleado(null);
+        // act - assert
+        mocMvc.perform(post("/nomina")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(nomina)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'El id del empleado es obligatorio'}"));
+    }
+
+    @Test
+    public void validacionCmapoFechaPago() throws Exception{
+        // arrange
+        ComandoNomina nomina = new ComandoNominaTestDataBuilder().build();
+        nomina.setFechaPago(null);
+        // act - assert
+        mocMvc.perform(post("/nomina")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(nomina)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'Fecha de pago es obligatoria'}"));
+    }
+
+    @Test
+    public void validacionCmapoPagoEmpleado() throws Exception{
+        // arrange
+        ComandoNomina nomina = new ComandoNominaTestDataBuilder().build();
+        nomina.setPagoEmpleado(null);
+        // act - assert
+        mocMvc.perform(post("/nomina")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(nomina)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'El pago del empleado es obligatorio'}"));
     }
 
 }
