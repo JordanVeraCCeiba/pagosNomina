@@ -1,7 +1,7 @@
 package com.ceiba.nomina.adaptador.dao;
 
 import com.ceiba.infraestructura.jdbc.MapperResult;
-import com.ceiba.empleado.modelo.dto.DtoNomina;
+import com.ceiba.nomina.modelo.dto.DtoNomina;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

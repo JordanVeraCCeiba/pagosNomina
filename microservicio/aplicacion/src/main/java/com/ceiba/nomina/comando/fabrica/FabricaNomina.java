@@ -1,7 +1,7 @@
 package com.ceiba.nomina.comando.fabrica;
 
 import com.ceiba.nomina.comando.ComandoNomina;
-import com.ceiba.empleado.modelo.entidad.Nomina;
+import com.ceiba.nomina.modelo.entidad.Nomina;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -4,8 +4,8 @@ import com.ceiba.ComandoRespuesta;
 import com.ceiba.manejador.ManejadorComandoRespuesta;
 import com.ceiba.nomina.comando.ComandoNomina;
 import com.ceiba.nomina.comando.fabrica.FabricaNomina;
-import com.ceiba.empleado.modelo.entidad.Nomina;
-import com.ceiba.empleado.servicio.ServicioCrearNomina;
+import com.ceiba.nomina.modelo.entidad.Nomina;
+import com.ceiba.nomina.servicio.ServicioCrearNomina;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,6 +1,7 @@
 package com.ceiba.empleado.modelo.entidad;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionError;
 import lombok.Getter;
 
 import java.text.ParseException;
@@ -58,10 +59,10 @@ public class Empleado {
             Calendar calendar = GregorianCalendar.getInstance();
             calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 18);
             if(!calendar.getTime().after(date)){
-                throw new ExcepcionDuplicidad(EL_EMPLEADO_DEBE_SER_MAYOR_DE_EDAD);
+                throw new ExcepcionError(EL_EMPLEADO_DEBE_SER_MAYOR_DE_EDAD);
             }
         } catch (ParseException e) {
-            throw new ExcepcionDuplicidad(ERROR_FORMATO_DE_FECHA);
+            throw new ExcepcionError(ERROR_FORMATO_DE_FECHA);
         }
     }
 

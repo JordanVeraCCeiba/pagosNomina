@@ -1,8 +1,9 @@
 package com.ceiba.configuracion;
 
 import com.ceiba.empleado.puerto.repositorio.RepositorioEmpleado;
-import com.ceiba.empleado.puerto.repositorio.RepositorioNomina;
+import com.ceiba.nomina.puerto.repositorio.RepositorioNomina;
 import com.ceiba.empleado.servicio.*;
+import com.ceiba.nomina.servicio.ServicioCrearNomina;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

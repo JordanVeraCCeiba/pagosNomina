@@ -2,8 +2,8 @@ package com.ceiba.nomina.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
-import com.ceiba.empleado.modelo.entidad.Nomina;
-import com.ceiba.empleado.puerto.repositorio.RepositorioNomina;
+import com.ceiba.nomina.modelo.entidad.Nomina;
+import com.ceiba.nomina.puerto.repositorio.RepositorioNomina;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 

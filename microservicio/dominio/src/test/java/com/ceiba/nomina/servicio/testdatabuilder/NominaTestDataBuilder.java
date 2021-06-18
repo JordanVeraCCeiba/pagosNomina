@@ -1,6 +1,5 @@
 package com.ceiba.nomina.servicio.testdatabuilder;
-import com.ceiba.empleado.modelo.entidad.Empleado;
-import com.ceiba.empleado.modelo.entidad.Nomina;
+import com.ceiba.nomina.modelo.entidad.Nomina;
 
 public class NominaTestDataBuilder {
 

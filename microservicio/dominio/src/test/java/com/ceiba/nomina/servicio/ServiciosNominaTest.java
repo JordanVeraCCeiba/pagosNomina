@@ -2,9 +2,8 @@ package com.ceiba.nomina.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.empleado.modelo.entidad.Nomina;
-import com.ceiba.empleado.puerto.repositorio.RepositorioNomina;
-import com.ceiba.empleado.servicio.ServicioCrearNomina;
+import com.ceiba.nomina.modelo.entidad.Nomina;
+import com.ceiba.nomina.puerto.repositorio.RepositorioNomina;
 import com.ceiba.nomina.servicio.testdatabuilder.NominaTestDataBuilder;
 import org.junit.Test;
 import org.mockito.Mockito;
