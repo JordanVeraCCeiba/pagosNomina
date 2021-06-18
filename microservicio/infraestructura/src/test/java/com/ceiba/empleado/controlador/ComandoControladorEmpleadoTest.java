@@ -90,4 +90,68 @@ public class ComandoControladorEmpleadoTest {
                 .andExpect(content().json("{'nombreExcepcion': 'ExcepcionDuplicidad', 'mensaje': 'El empleado ya existe en el sistema'}"));
     }
 
+    @Test
+    public void validacionCampoNombre() throws Exception{
+        // arrange
+        ComandoEmpleado empleado = new ComandoEmpleadoTestDataBuilder().build();
+        empleado.setNombre(null);
+        // act - assert
+        mocMvc.perform(post("/empleados")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(empleado)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'El campo nombre es obligatorio'}"));
+    }
+
+    @Test
+    public void validacionCampoApellido() throws Exception{
+        // arrange
+        ComandoEmpleado empleado = new ComandoEmpleadoTestDataBuilder().build();
+        empleado.setApellido(null);
+        // act - assert
+        mocMvc.perform(post("/empleados")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(empleado)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'El campo apellido es obligatorio'}"));
+    }
+
+    @Test
+    public void validacionCampoCedula() throws Exception{
+        // arrange
+        ComandoEmpleado empleado = new ComandoEmpleadoTestDataBuilder().build();
+        empleado.setCedula(null);
+        // act - assert
+        mocMvc.perform(post("/empleados")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(empleado)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'El campo cedula es obligatorio'}"));
+    }
+
+    @Test
+    public void validacionCampoFechaNacimiento() throws Exception{
+        // arrange
+        ComandoEmpleado empleado = new ComandoEmpleadoTestDataBuilder().build();
+        empleado.setFechaNacimiento(null);
+        // act - assert
+        mocMvc.perform(post("/empleados")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(empleado)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'El campo fecha de nacimiento es obligatorio'}"));
+    }
+
+    @Test
+    public void validacionCampoSalario() throws Exception{
+        // arrange
+        ComandoEmpleado empleado = new ComandoEmpleadoTestDataBuilder().build();
+        empleado.setSalario(null);
+        // act - assert
+        mocMvc.perform(post("/empleados")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(empleado)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionValorObligatorio', 'mensaje': 'El campo salario es obligatorio'}"));
+    }
 }

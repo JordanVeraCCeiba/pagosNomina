@@ -1,6 +1,7 @@
 package com.ceiba.nomina.modelo.entidad;
 
 import com.ceiba.dominio.excepcion.ExcepcionError;
+import com.ceiba.dominio.excepcion.ExcepcionErrorFecha;
 import lombok.Getter;
 import lombok.Setter;
 import java.text.ParseException;
@@ -20,6 +21,8 @@ public class Nomina {
     public static final String VALIDACION_PAGO = "El pago debe ser igual al registrado o ultimo actualizado";
     private static final String ERROR_FORMATO_DE_FECHA = "Error en el formato de la fecha";
     private static final String EL_PAGO_NO_SE_PUEDE_REALIZAR_UN_DOMINGO = "El pago no se puede realizar un domingo";
+    public static final double PORCENTAJE_DESCUENTO_SALUD = 0.04;
+    public static final double PORCENTAJE_DESCUENTO_PENSION = 0.04;
 
     private Long id;
     private Long idEmpleado;
@@ -35,28 +38,25 @@ public class Nomina {
         validarObligatorio(pagoEmpleado,PAGO_EMPLEADO_OBLIGATORIO);
 
         validarFechaPago(fechaPago);
-        salud = calcularSalud(pagoEmpleado);
-        pension = calcularPension(pagoEmpleado);
-        pagoEmpleado = calcularSueldo(pagoEmpleado);
 
         this.id = id;
         this.idEmpleado = idEmpleado;
         this.fechaPago = fechaPago;
-        this.pagoEmpleado = pagoEmpleado;
-        this.salud = salud;
-        this.pension = pension;
+        this.pagoEmpleado = calcularSueldo(pagoEmpleado);
+        this.salud = calcularSalud(pagoEmpleado);
+        this.pension = calcularPension(pagoEmpleado);
     }
 
     private Double calcularSalud(Double pagoEmpleado){
-        return  pagoEmpleado * 0.04;
+        return  pagoEmpleado * PORCENTAJE_DESCUENTO_SALUD;
     }
 
     private Double calcularPension(Double pagoEmpleado){
-        return  pagoEmpleado * 0.04;
+        return  pagoEmpleado * PORCENTAJE_DESCUENTO_PENSION;
     }
 
     private Double calcularSueldo(Double pagoEmpleado){
-        return pagoEmpleado - (pagoEmpleado * 0.08);
+        return pagoEmpleado - (pagoEmpleado * (PORCENTAJE_DESCUENTO_SALUD+PORCENTAJE_DESCUENTO_PENSION));
     }
 
     private void validarFechaPago(String fechaPago) {
@@ -68,7 +68,7 @@ public class Nomina {
                 throw new ExcepcionError(EL_PAGO_NO_SE_PUEDE_REALIZAR_UN_DOMINGO);
             }
         } catch (ParseException e) {
-            throw new ExcepcionError(ERROR_FORMATO_DE_FECHA);
+            throw new ExcepcionErrorFecha(ERROR_FORMATO_DE_FECHA);
         }
     }
 
