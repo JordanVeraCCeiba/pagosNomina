@@ -1,6 +1,6 @@
 package com.ceiba.nomina.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionError;
+import com.ceiba.dominio.excepcion.ExcepcionSalario;
 import com.ceiba.nomina.modelo.entidad.Nomina;
 import com.ceiba.nomina.puerto.repositorio.RepositorioNomina;
 
@@ -22,7 +22,7 @@ public class ServicioCrearNomina {
     public void validarSalario(Nomina nomina) {
         boolean valididarSalario = this.repositorioNomina.validarSalario(nomina);
         if(!valididarSalario) {
-            throw new ExcepcionError(ERROR_SALARIO);
+            throw new ExcepcionSalario(ERROR_SALARIO);
         }
     }
 

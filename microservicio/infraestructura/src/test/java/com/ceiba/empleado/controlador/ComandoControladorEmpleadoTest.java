@@ -74,7 +74,7 @@ public class ComandoControladorEmpleadoTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(empleado)))
                 .andExpect(status().is4xxClientError())
-                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionError', 'mensaje': 'El empleado debe tener mas de 18 años'}"));
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionEdad', 'mensaje': 'El empleado debe tener mas de 18 años'}"));
     }
 
     @Test

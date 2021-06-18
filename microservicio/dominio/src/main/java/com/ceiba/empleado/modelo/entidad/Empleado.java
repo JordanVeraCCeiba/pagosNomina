@@ -1,6 +1,7 @@
 package com.ceiba.empleado.modelo.entidad;
 
-import com.ceiba.dominio.excepcion.ExcepcionError;
+import com.ceiba.dominio.excepcion.ExcepcionEdad;
+import com.ceiba.dominio.excepcion.ExcepcionErrorFecha;
 import lombok.Getter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,7 +48,6 @@ public class Empleado {
         this.fechaNacimiento = fechaNacimiento;
         this.salario = salario;
         this.cargo = cargo;
-
     }
 
     public void validarEdad(String fechaNacimiento) {
@@ -56,10 +56,10 @@ public class Empleado {
             Calendar calendar = GregorianCalendar.getInstance();
             calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 18);
             if(!calendar.getTime().after(date)){
-                throw new ExcepcionError(EL_EMPLEADO_DEBE_SER_MAYOR_DE_EDAD);
+                throw new ExcepcionEdad(EL_EMPLEADO_DEBE_SER_MAYOR_DE_EDAD);
             }
         } catch (ParseException e) {
-            throw new ExcepcionError(ERROR_FORMATO_DE_FECHA);
+            throw new ExcepcionErrorFecha(ERROR_FORMATO_DE_FECHA);
         }
     }
 

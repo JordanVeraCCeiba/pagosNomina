@@ -2,6 +2,7 @@ package com.ceiba.nomina.modelo.entidad;
 
 import com.ceiba.dominio.excepcion.ExcepcionError;
 import com.ceiba.dominio.excepcion.ExcepcionErrorFecha;
+import com.ceiba.dominio.excepcion.ExcepcionPagoDomingo;
 import lombok.Getter;
 import lombok.Setter;
 import java.text.ParseException;
@@ -65,7 +66,7 @@ public class Nomina {
             Calendar cal = Calendar. getInstance();
             cal.setTime(date);
             if(cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
-                throw new ExcepcionError(EL_PAGO_NO_SE_PUEDE_REALIZAR_UN_DOMINGO);
+                throw new ExcepcionPagoDomingo(EL_PAGO_NO_SE_PUEDE_REALIZAR_UN_DOMINGO);
             }
         } catch (ParseException e) {
             throw new ExcepcionErrorFecha(ERROR_FORMATO_DE_FECHA);

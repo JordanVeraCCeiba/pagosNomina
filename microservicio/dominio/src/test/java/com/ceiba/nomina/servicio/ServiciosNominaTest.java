@@ -2,6 +2,8 @@ package com.ceiba.nomina.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionError;
+import com.ceiba.dominio.excepcion.ExcepcionPagoDomingo;
+import com.ceiba.dominio.excepcion.ExcepcionSalario;
 import com.ceiba.nomina.modelo.entidad.Nomina;
 import com.ceiba.nomina.puerto.repositorio.RepositorioNomina;
 import com.ceiba.nomina.servicio.testdatabuilder.NominaTestDataBuilder;
@@ -18,7 +20,7 @@ public class ServiciosNominaTest {
         Mockito.when(repositorioNomina.validarSalario(Mockito.spy(nomina))).thenReturn(true);
         ServicioCrearNomina servicioCrearNomina = new ServicioCrearNomina(repositorioNomina);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearNomina.validarSalario(nomina), ExcepcionError.class,"El salario debe ser igual al registrado o al ultimo actualizado");
+        BasePrueba.assertThrows(() -> servicioCrearNomina.validarSalario(nomina), ExcepcionSalario.class,"El salario debe ser igual al registrado o al ultimo actualizado");
     }
 
     @Test
@@ -26,7 +28,7 @@ public class ServiciosNominaTest {
         // arrange
         NominaTestDataBuilder nominaTestDataBuilder = new NominaTestDataBuilder().conFechaPago("20/06/2021");
         // act - assert
-        BasePrueba.assertThrows(() -> nominaTestDataBuilder.build(), ExcepcionError.class, "El pago no se puede realizar un domingo");
+        BasePrueba.assertThrows(() -> nominaTestDataBuilder.build(), ExcepcionPagoDomingo.class, "El pago no se puede realizar un domingo");
     }
 
 }

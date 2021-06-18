@@ -54,7 +54,7 @@ public class ComandoControladorNominaTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(nomina)))
                 .andExpect(status().is4xxClientError())
-                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionError', 'mensaje': 'El salario debe ser igual al registrado o al ultimo actualizado'}"));;
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionSalario', 'mensaje': 'El salario debe ser igual al registrado o al ultimo actualizado'}"));;
     }
 
     @Test
@@ -67,7 +67,7 @@ public class ComandoControladorNominaTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(nomina)))
                 .andExpect(status().is4xxClientError())
-                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionError', 'mensaje': 'El pago no se puede realizar un domingo'}"));
+                .andExpect(content().json("{'nombreExcepcion': 'ExcepcionPagoDomingo', 'mensaje': 'El pago no se puede realizar un domingo'}"));
     }
 
 }
