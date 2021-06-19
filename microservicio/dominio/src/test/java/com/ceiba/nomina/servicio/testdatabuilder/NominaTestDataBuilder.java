@@ -24,7 +24,7 @@ public class NominaTestDataBuilder {
     }
 
     public Nomina build() {
-        return new Nomina(id,idEmpleado,fechaPago, pagoEmpleado,salud,pension);
+        return new Nomina(id,idEmpleado,fechaPago, pagoEmpleado);
     }
 
 }

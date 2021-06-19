@@ -1,6 +1,5 @@
 package com.ceiba.nomina.modelo.entidad;
 
-import com.ceiba.dominio.excepcion.ExcepcionError;
 import com.ceiba.dominio.excepcion.ExcepcionErrorFecha;
 import com.ceiba.dominio.excepcion.ExcepcionPagoDomingo;
 import lombok.Getter;
@@ -32,7 +31,7 @@ public class Nomina {
     private Double salud;
     private Double pension;
 
-    public Nomina(Long id, Long idEmpleado, String fechaPago, Double pagoEmpleado, Double salud, Double pension) {
+    public Nomina(Long id, Long idEmpleado, String fechaPago, Double pagoEmpleado) {
 
         validarObligatorio(idEmpleado,ID_EMPLEADO_OBLIGATORIO);
         validarObligatorio(fechaPago,FECHA_PAGO_OBLIGATORIO);

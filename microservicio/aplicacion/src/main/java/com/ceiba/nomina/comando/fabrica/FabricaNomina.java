@@ -12,9 +12,7 @@ public class FabricaNomina {
                 comandoNomina.getId(),
                 comandoNomina.getIdEmpleado(),
                 comandoNomina.getFechaPago(),
-                comandoNomina.getPagoEmpleado(),
-                comandoNomina.getSalud(),
-                comandoNomina.getPension()
+                comandoNomina.getPagoEmpleado()
         );
     }
 
