@@ -21,6 +21,6 @@ public class ManejadorCrearNomina implements ManejadorComandoRespuesta<ComandoNo
 
     public ComandoRespuesta<Long> ejecutar(ComandoNomina comandoNomina) {
         Nomina nomina = this.fabricaNomina.crear(comandoNomina);
-        return new ComandoRespuesta<>(this.servicioCrearNomina.ejecutar(nomina));
+        return new ComandoRespuesta<>(this.servicioCrearNomina.ejecta(nomina));
     }
 }

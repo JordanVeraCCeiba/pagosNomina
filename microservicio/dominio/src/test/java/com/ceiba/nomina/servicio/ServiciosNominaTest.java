@@ -1,7 +1,6 @@
 package com.ceiba.nomina.servicio;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.dominio.excepcion.ExcepcionError;
 import com.ceiba.dominio.excepcion.ExcepcionPagoDomingo;
 import com.ceiba.dominio.excepcion.ExcepcionSalario;
 import com.ceiba.nomina.modelo.entidad.Nomina;
@@ -13,14 +12,14 @@ import org.mockito.Mockito;
 public class ServiciosNominaTest {
 
     @Test
-    public void validarPago() {
+    public void validarSalario() {
         // arrange
         Nomina nomina = new NominaTestDataBuilder().build();
         RepositorioNomina repositorioNomina = Mockito.mock(RepositorioNomina.class);
         Mockito.when(repositorioNomina.validarSalario(Mockito.spy(nomina))).thenReturn(true);
         ServicioCrearNomina servicioCrearNomina = new ServicioCrearNomina(repositorioNomina);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearNomina.validarSalario(nomina), ExcepcionSalario.class,"El salario debe ser igual al registrado o al ultimo actualizado");
+        BasePrueba.assertThrows(() -> servicioCrearNomina.validatorSalary(nomina), ExcepcionSalario.class,"El salario debe ser igual al registrado o al ultimo actualizado");
     }
 
     @Test
