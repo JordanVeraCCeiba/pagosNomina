@@ -14,12 +14,12 @@ public class ServicioCrearNomina {
         this.repositorioNomina = repositorioNomina;
     }
 
-    public Long ejecta(Nomina nomina) {
-        validatorSalary(nomina);
+    public Long ejecutar(Nomina nomina) {
+        validarSalario(nomina);
         return this.repositorioNomina.crear(nomina);
     }
 
-    public void validatorSalary(Nomina nomina) {
+    public void validarSalario(Nomina nomina) {
         if(!this.repositorioNomina.validarSalario(nomina)) {
             throw new ExcepcionSalario(ERROR_SALARIO);
         }

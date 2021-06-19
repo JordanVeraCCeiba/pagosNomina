@@ -19,7 +19,7 @@ public class ServiciosNominaTest {
         Mockito.when(repositorioNomina.validarSalario(Mockito.spy(nomina))).thenReturn(true);
         ServicioCrearNomina servicioCrearNomina = new ServicioCrearNomina(repositorioNomina);
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearNomina.validatorSalary(nomina), ExcepcionSalario.class,"El salario debe ser igual al registrado o al ultimo actualizado");
+        BasePrueba.assertThrows(() -> servicioCrearNomina.validarSalario(nomina), ExcepcionSalario.class,"El salario debe ser igual al registrado o al ultimo actualizado");
     }
 
     @Test
