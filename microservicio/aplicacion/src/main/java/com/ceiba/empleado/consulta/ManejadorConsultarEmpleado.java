@@ -15,5 +15,5 @@ public class ManejadorConsultarEmpleado {
         this.daoEmpleado = daoEmpleado;
     }
 
-    public List<DtoEmpleado> ejecutar(Long id){ return this.daoEmpleado.Consultar(id); }
+    public List<DtoEmpleado> ejecutar(Long id){ return this.daoEmpleado.Consult(id); }
 }
