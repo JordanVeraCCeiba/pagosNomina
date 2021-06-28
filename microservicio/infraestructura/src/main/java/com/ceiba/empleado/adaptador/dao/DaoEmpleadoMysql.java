@@ -29,7 +29,7 @@ public class DaoEmpleadoMysql implements DaoEmpleado {
     }
 
     @Override
-    public List<DtoEmpleado> Consult(Long id) {
+    public List<DtoEmpleado> consult(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlConsultar, paramSource, new MapeoEmpleado());
