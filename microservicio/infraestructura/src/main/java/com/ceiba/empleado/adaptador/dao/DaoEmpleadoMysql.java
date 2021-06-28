@@ -32,7 +32,6 @@ public class DaoEmpleadoMysql implements DaoEmpleado {
     public List<DtoEmpleado> Consult(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        System.out.println("id = "+id);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlConsultar, paramSource, new MapeoEmpleado());
     }
 
