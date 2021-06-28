@@ -1,0 +1,1 @@
+select id, nombre, apellido, cedula, fechaNacimiento, salario, cargo from empleado where id = :id

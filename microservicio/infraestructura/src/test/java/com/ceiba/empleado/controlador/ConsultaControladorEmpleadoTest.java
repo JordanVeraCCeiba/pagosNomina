@@ -1,6 +1,8 @@
 package com.ceiba.empleado.controlador;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import com.ceiba.ApplicationMock;
 import org.junit.Test;
@@ -27,7 +29,8 @@ public class ConsultaControladorEmpleadoTest {
         // act - assert
         mocMvc.perform(get("/empleados")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$", hasSize(1)));
     }
 
 

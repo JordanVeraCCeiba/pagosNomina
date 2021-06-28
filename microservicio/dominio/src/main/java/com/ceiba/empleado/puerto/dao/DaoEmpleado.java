@@ -11,5 +11,6 @@ public interface DaoEmpleado {
      * @return los empleados
      */
     List<DtoEmpleado> listar();
+    List<DtoEmpleado> Consultar(Long id);
 
 }
