@@ -81,7 +81,7 @@ public class ComandoControladorEmpleadoTest {
     public void validacionCedula() throws Exception{
         // arrange
         ComandoEmpleado empleado = new ComandoEmpleadoTestDataBuilder().build();
-        empleado.setCedula(1090506292L);
+        empleado.setCedula(123456789L);
         // act - assert
         mocMvc.perform(post("/empleados")
                 .contentType(MediaType.APPLICATION_JSON)

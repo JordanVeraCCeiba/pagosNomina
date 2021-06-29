@@ -15,7 +15,7 @@ public class ComandoEmpleadoTestDataBuilder {
     public ComandoEmpleadoTestDataBuilder() {
         nombre = "Jordan";
         apellido = "Vera";
-        cedula = 123L;
+        cedula = 1234567L;
         fechaNacimiento = "12/03/1997";
         salario = 2000000D;
         cargo = "Arquitecto Desarrollador";
