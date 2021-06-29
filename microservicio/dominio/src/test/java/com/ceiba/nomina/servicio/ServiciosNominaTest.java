@@ -9,6 +9,8 @@ import com.ceiba.nomina.servicio.testdatabuilder.NominaTestDataBuilder;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import static org.junit.Assert.assertEquals;
+
 public class ServiciosNominaTest {
 
     @Test
@@ -29,5 +31,33 @@ public class ServiciosNominaTest {
         // act - assert
         BasePrueba.assertThrows(() -> nominaTestDataBuilder.build(), ExcepcionPagoDomingo.class, "El pago no se puede realizar un domingo");
     }
+
+    @Test
+    public void validarSalud() {
+        // arrange
+        Nomina nomina = new Nomina();
+        Double salud = nomina.calcularSalud(2_500_000D);
+        // act - assert
+        assertEquals(java.util.Optional.of(100_000D), java.util.Optional.of(salud));
+    }
+
+    @Test
+    public void validarPension() {
+        // arrange
+        Nomina nomina = new Nomina();
+        Double salud = nomina.calcularPension(2_500_000D);
+        // act - assert
+        assertEquals(java.util.Optional.of(100_000D), java.util.Optional.of(salud));
+    }
+
+    @Test
+    public void validarPagoEmpleado() {
+        // arrange
+        Nomina nomina = new Nomina();
+        Double sueldo = nomina.calcularSueldo(2_500_000D);
+        // act - assert
+        assertEquals(java.util.Optional.of(2_300_000D), java.util.Optional.of(sueldo));
+    }
+
 
 }

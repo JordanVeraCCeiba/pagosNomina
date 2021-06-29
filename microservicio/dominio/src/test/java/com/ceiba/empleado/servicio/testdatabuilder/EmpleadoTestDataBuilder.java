@@ -14,7 +14,7 @@ public class EmpleadoTestDataBuilder {
     public EmpleadoTestDataBuilder() {
         nombre = "Jordan";
         apellido = "Vera";
-        cedula = 123L;
+        cedula = 123567L;
         fechaNacimiento = "12/03/1997";
         salario = 2000000D;
         cargo = "Arquitecto Desarrollador";
@@ -22,6 +22,31 @@ public class EmpleadoTestDataBuilder {
 
     public EmpleadoTestDataBuilder conFechaNacimiento(String fecha) {
         this.fechaNacimiento = fecha;
+        return this;
+    }
+
+    public EmpleadoTestDataBuilder conSalario(Double salario) {
+        this.salario = salario;
+        return this;
+    }
+
+    public EmpleadoTestDataBuilder conNombre(String nombre) {
+        this.nombre = nombre;
+        return this;
+    }
+
+    public EmpleadoTestDataBuilder conApellido(String apellido) {
+        this.apellido = apellido;
+        return this;
+    }
+
+    public EmpleadoTestDataBuilder conCedula(Long cedula) {
+        this.cedula = cedula;
+        return this;
+    }
+
+    public EmpleadoTestDataBuilder conCargo(String cargo) {
+        this.cargo = cargo;
         return this;
     }
 

@@ -33,35 +33,30 @@ public class ControladorEmpleado {
         this.manejadorActualizarEmpleado = manejadorActualizarEmpleado;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     @ApiOperation("Listar Empleado")
     public List<DtoEmpleado> listar() {
         return this.manejadorListarEmpleado.ejecutar();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value="/{id}")
     @ApiOperation("Consultar Empleado")
     public List<DtoEmpleado> consultarEmpleado(@PathVariable Long id) {
         return this.manejadorConsultarEmpleado.ejecutar(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     @ApiOperation("Crear Empleado")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoEmpleado comandoEmpleado) {
         return manejadorCrearEmpleado.ejecutar(comandoEmpleado);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping(value="/{id}")
     @ApiOperation("Eliminar Empleado")
     public void eliminar(@PathVariable Long id) {
         manejadorEliminarEmpleado.ejecutar(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping(value="/{id}")
     @ApiOperation("Actualizar Empleado")
     public void actualizar(@RequestBody ComandoEmpleado comandoEmpleado, @PathVariable Long id) {

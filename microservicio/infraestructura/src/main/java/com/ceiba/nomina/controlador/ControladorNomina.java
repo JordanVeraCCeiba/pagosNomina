@@ -28,21 +28,18 @@ public class ControladorNomina {
         this.manejadorCrearNomina = manejadorCrearNomina;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     @ApiOperation("Listar Nomina")
     public List<DtoNomina> listar() {
         return this.manejadorListarNomina.ejecutar();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/fechas")
     @ApiOperation("Listar Nomina Entre Fechas")
     public List<DtoNomina> listarNominaFechas(@RequestBody ComandoNominaFechas comandoNominaFechas) {
         return this.manejadorListarNominaFechas.ejecutar(comandoNominaFechas.getFecha1(), comandoNominaFechas.getFecha2());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     @ApiOperation("Crear Nomina")
     public ComandoRespuesta<Long> crear(@RequestBody ComandoNomina comandoNomina) {

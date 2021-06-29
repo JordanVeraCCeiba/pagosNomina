@@ -31,6 +31,8 @@ public class Nomina {
     private Double salud;
     private Double pension;
 
+    public Nomina() { }
+
     public Nomina(Long id, Long idEmpleado, String fechaPago, Double pagoEmpleado) {
 
         validarObligatorio(idEmpleado,ID_EMPLEADO_OBLIGATORIO);
@@ -47,19 +49,19 @@ public class Nomina {
         this.pension = calcularPension(pagoEmpleado);
     }
 
-    private Double calcularSalud(Double pagoEmpleado){
+    public Double calcularSalud(Double pagoEmpleado){
         return  pagoEmpleado * PORCENTAJE_DESCUENTO_SALUD;
     }
 
-    private Double calcularPension(Double pagoEmpleado){
+    public Double calcularPension(Double pagoEmpleado){
         return  pagoEmpleado * PORCENTAJE_DESCUENTO_PENSION;
     }
 
-    private Double calcularSueldo(Double pagoEmpleado){
+    public Double calcularSueldo(Double pagoEmpleado){
         return pagoEmpleado - (pagoEmpleado * (PORCENTAJE_DESCUENTO_SALUD+PORCENTAJE_DESCUENTO_PENSION));
     }
 
-    private void validarFechaPago(String fechaPago) {
+    public void validarFechaPago(String fechaPago) {
         try {
             Date date = new SimpleDateFormat("dd/MM/yyyy").parse(fechaPago);
             Calendar cal = Calendar. getInstance();

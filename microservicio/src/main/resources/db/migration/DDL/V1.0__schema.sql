@@ -18,5 +18,5 @@ create table nomina (
  salud decimal not null,
  pension decimal not null,
  primary key (id),
- foreign key (idEmpleado) REFERENCES empleado (id)
+ foreign key (idEmpleado) REFERENCES empleado (id) ON DELETE CASCADE
 );
