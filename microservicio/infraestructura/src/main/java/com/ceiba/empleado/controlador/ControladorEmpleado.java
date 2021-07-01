@@ -11,6 +11,7 @@ import com.ceiba.empleado.modelo.dto.DtoEmpleado;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
+import com.ceiba.empleado.modelo.entidad.Empleado;
 
 import java.util.List;
 
