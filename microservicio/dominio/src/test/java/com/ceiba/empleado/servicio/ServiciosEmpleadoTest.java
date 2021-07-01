@@ -25,6 +25,17 @@ public class ServiciosEmpleadoTest {
     }
 
     @Test
+    public void validarExistenciaPrevia() {
+        // arrange
+        Empleado empleado = new EmpleadoTestDataBuilder().build();
+        RepositorioEmpleado repositorioEmpleado = Mockito.mock(RepositorioEmpleado.class);
+        Mockito.when(repositorioEmpleado.existe(Mockito.anyLong())).thenReturn(true);
+        ServicioCrearEmpleado servicioCrearEmpleado = new ServicioCrearEmpleado(repositorioEmpleado);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearEmpleado.validarExistenciaPrevia(empleado), ExcepcionDuplicidad.class,"El empleado ya existe en el sistema");
+    }
+
+    @Test
     public void validarEdad() {
         // arrange
         EmpleadoTestDataBuilder usuarioTestDataBuilder = new EmpleadoTestDataBuilder().conFechaNacimiento("10/10/2020");
